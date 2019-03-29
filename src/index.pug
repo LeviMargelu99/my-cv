@@ -1,18 +1,25 @@
-doctype html
-html(lang="en")
-  head
-    title Welcome to Pug Starter
-    meta(content="Simple pug (jade) starter aimed to quickly deliver HTML & CSS projects" name="description")
-    //- this checks to see the the "embed" property is set to "true"
-    //- in the package.json file
-    if config.entry.css.embed
-      link(rel="stylesheet" href=`${embedPath}` inline)
-  body
-    h1 Welcome #[span #{data.user.name}]!
-    p This is a barebone setup.!
-    p=data.site.message
+extend _component/layout/base
 
-    //- The style.css is at the bottom so it doesn't
-    //- block the loading of assets
-    if config.entry.css.external
-      link(rel="stylesheet", href=`${baseUrl}/style.css`)
+block config
+    -
+        var title = 'Welcome to Quick Blog - QB'
+        var description = 'Using super Quick Blog is easy and you can get 100/100 score on Google pagespeed insights'
+block content
+    .content
+        #continue
+        h2 Firstly, let's write some content
+        p 
+            | The sources of Quick Blog can be (put the link) found on GitHub at&nbsp;
+            //- | #{" "}
+            a(href="https://github.com/marianzburlea/quick-blog") Quick Blog
+        blockquote.blockquote
+            .blockquote__body
+                p You don't have to be good to start, you have to start to become good.
+            .blockquote-footer
+                a(href="http://bitbee.uk", target="_blank") Marian Zburlea
+        p.lead Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        p
+            small Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        a.top(href="#top")
+            span Top
+            span.top-arrow
